@@ -1,0 +1,17 @@
+name: graphes
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installation de graphviz
+        run: sudo apt install -y graphviz
+      - name: check out repo
+        uses: actions/checkout@v3
+      - name: Lancement de graphviz
+        run: bash run2.sh
+      - name: Upload des fichiers SVG
+        uses: actions/upload-artifact@v4
+        with:
+          name: graphessvg
+          path: ./*.svg
